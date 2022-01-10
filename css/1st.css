@@ -107,7 +107,7 @@ div.slogan:hover{
 div.container{
     font-size: 10px;
 }
-.page-image {
+.page-image{
                 object-position: center;
                 animation: rotateImg 500s linear alternate infinite
             }
