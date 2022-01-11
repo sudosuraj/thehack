@@ -99,7 +99,8 @@ div.root{
     color: aqua;
 }
 span.command{
-    color: green;
+    color: rgb(124, 0, 128);
+    text-align: center;
 }
 div.slogan:hover{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
