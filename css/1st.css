@@ -4,8 +4,8 @@ body{
     margin: auto;
     font-family: 'Lora', serif;
     line-height: 1.4em;
-    color: var(--fg-color);
-	background-color: var(--bg-color);
+    background-color: #090c10;
+    text-align: center;
 }
 aside
 {
