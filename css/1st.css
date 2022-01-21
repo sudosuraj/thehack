@@ -5,7 +5,6 @@ body{
     font-family: 'Lora', serif;
     line-height: 1.4em;
     background-color: #090c10;
-    text-align: center;
 }
 aside
 {
@@ -17,9 +16,7 @@ aside
     border-style:ridge;
     width: 300px;
     list-style: inherit;
-    background-image: url('../sad-face-anime.jpg');
     background-size:200px;
-    color:white;
 }
 section
 {
@@ -28,11 +25,9 @@ section
         text-align: justify;
         scroll-behavior: auto;
         text-align: center;
-        color: lime;
 }
 
 a:link, a:visited{
-    background-color: black;
     color:lawngreen;
     padding: 2px 5px;
     text-align: center;
@@ -45,16 +40,12 @@ a:hover, a:active{
     background-color: none;
     color:aqua;
 }
-h1:hover{
-    color: lawngreen; 
-    text-transform:uppercase;
-}
+
 div.sticky{
     position: relative;
     position: sticky;
     top: 0;
-    padding: 30pxpx;
-    border-bottom: lawngreen;
+    padding: 30px;
     
 }
 
@@ -94,21 +85,6 @@ li {
     background-color: #04AA6D;
   }
 
-div.root{
-    color: aqua;
-}
-span.command{
-    color: rgb(124, 0, 128);
-    text-align: center;
-}
-div.slogan:hover{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color:rgb(0, 255, 229);
-    text-transform:none;
-    text-decoration-color: lawngreen;
-    text-transform: uppercase;
-
-}
 div.container{
     font-size: 10px;
 }
@@ -131,12 +107,8 @@ div.bg{
   background-size: cover;
 }
 
-h2{
-  color: aqua;
-  font-style: normal;
-  font: 1em sans-serif;ont
-}
-
-p.1{
-  color: aqua;
-}
+footer{
+  text-align: center;
+  color: darkgrey;
+  font-family: monospace;
+  }
