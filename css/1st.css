@@ -1,10 +1,18 @@
+:root{
+  --texthome : #242738;
+  --bgcolor: #F9F9F9;
+  
+}
+
+
 body{
+
     padding: 1em;
     max-width: 2000px;
     margin: auto;
     font-family: 'Lora', serif;
     line-height: 1.4em;
-    background-color: #090c10;
+    background-color: #10151b;
 }
 aside
 {
