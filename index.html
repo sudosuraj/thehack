@@ -27,7 +27,7 @@
         }
         
         a {
-            color: rgba(255, 255, 255, 0.411);
+            color: rgb(255, 0, 0);
             text-decoration: none;
             transition: color .22s linear;
         }
@@ -38,9 +38,12 @@
 
        
         body {
-            background-color: #070707;
+            background-color: #131313;
         }
-        
+        body ::selection{
+            background-color: lightsteelblue;
+            color: lime;
+        }
         body,
         #input {
             font-family: monospace;
