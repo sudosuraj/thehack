@@ -1603,7 +1603,7 @@
     }],
     37: [function(require, module, exports) {
         function id(env) {
-            env.output("uid=1337(spooky) gid=1337(spooky) groups=1337(spooky)");
+            env.output("uid=1337(sudosuraz) gid=1337(sudosuraz) groups=1337(sudosuraz)");
             env.exit()
         }
         module.exports = id
@@ -2171,13 +2171,13 @@
                         type: "dir",
                         modified: Date.now()
                     },
-                    "/home/spooky": {
+                    "/home/sudosuraz": {
                         type: "dir",
                         modified: Date.now()
                     }
                 },
-                user: "spooky",
-                workingDirectory: "/home/spooky"
+                user: "sudosuraz",
+                workingDirectory: "/home/sudosuraz"
             }
         }
 
