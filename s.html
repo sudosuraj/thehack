@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta property="og:image" content="https://spookysec.me/spooky.jpg" />
+    <meta property="og:image:secure_url" content="https://spookysec.me/spooky.jpg" />
+    <meta property="og:type" content="spooky sec" />
+    <meta property="og:url" content="https://spookysec.me" >
+    <meta property="og:title" content="Don't be scared"/>
+    <meta property="og:description" content="Spooky's environment :eyes:" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="/spooky.jpg" type="image/jpeg"/>
+    <meta charset="utf-8">
+    <title>SpookySec</title>
+    <style>
+        body {
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 100%;
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+        }
+        
+        a {
+            color: rgba(255, 255, 255, 0.411);
+            text-decoration: none;
+            transition: color .22s linear;
+        }
+        
+        a:hover {
+            color: #00ff00;
+        }
+
+       
+        body {
+            background-color: #070707;
+        }
+        
+        body,
+        #input {
+            font-family: monospace;
+            line-height: 175%;
+        }
+        
+        #input {
+            background-color: #000000;
+        }
+        
+        #header {
+            width: 70vw;
+        }
+        
+        #shell {
+            background-color: #000000;
+            border-style: solid;
+            border-width: 10px;
+            border-color: #000000;
+            height: 70vh;
+            width: 70vw;
+            overflow: auto;
+            scroll-behavior: smooth;
+        }
+        
+        #shell::-webkit-scrollbar {
+            width: 6px;
+            background-color: #F5F5F5;
+        }
+        
+        #shell::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);;
+            background-color: #F5F5F5;
+        }
+        
+        #shell::-webkit-scrollbar-thumb {
+            background-color: #000000;
+        }
+        
+        #title {
+            font-size: 50px;
+        }
+        
+        #output {
+            padding-top: 10px;
+            white-space: pre;
+            color: #00ce00;
+        }
+        
+        #input {
+            width: 90%;
+            border: none;
+            font-size: inherit;
+        }
+        
+        #input:focus {
+            outline: none;
+        }
+        
+        #input,
+        .input-wrap {
+            color: #00ffea;
+        }
+        
+        .error {
+            color: red;
+            
+        }
+
+        .inspiration {
+            position: absolute;
+            bottom: 8px;
+            left: 16px;
+            font-size: 8px;
+            color:rgb(32, 32, 32);
+        }
+
+        #nullsec {
+            color:rgb(44, 44, 44)
+        }
+
+        #nullsec:hover {
+            color:#00ff00;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1><a href="">Spooky's 127.0.0.1</a></h1>
+        <h2><a href="javascript:run('cat instagram.txt')">Instagram</a> - <a href="javascript:run('cat github.txt')">Github</a></h2>
+    </div>
+    <div id="shell">
+        <div id="output"></div>
+        <div class="input-wrap">
+            <span>$</span>
+            <input id="input" type="text" autofocus />
+        </div>
+    </div>
+    <script src="main.js" type="text/javascript"></script>
+    <script>
+        var input = document.getElementById('input')
+        var output = document.getElementById('output')
+
+        var emulator = bashEmulator({
+            workingDirectory: '/home/spooky/',
+            fileSystem: {
+                '/': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/home': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/home/spooky/awesomeRepos': {
+                    type: 'dir',
+                    modified: Date.now()
+                }, 
+                '/home/spooky/instagram.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: '<a href="https://instagram.com/spooky_sec/" target="_blank">@spooky_sec</a> is my instagram account :P'
+                },
+                '/home/spooky/discord.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'SpookySec\#6710 \<-\-- My discord \;\-\;'
+                },
+                '/home/spooky/github.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Here\'s my Github <a href="https://github.com/SpookySec" target="_blank">account</a>'
+                },
+                '/home/spooky/.secret.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'perhaps "env" would reveal the hidden?'
+                },
+                '/home/spooky/whoami.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Hello, welcome to my localhost.\nFeel free to discover the website for yourself!\n\t- Be ware, always check your environment :3' 
+                },
+                '/etc': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/etc/passwd': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'spooky:x:1000:1000:spooky:/home/spooky:/bin/fish'
+                },
+                '/bin': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/bin/hack.bin': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: '--- T H E  U L T I M A T E  N A S A  H A C K ---'
+                },
+                '/proc': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/proc/self': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/proc/self/exe': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'As of right now, this server is running on localhost using a python web server\nJust kidding, that was long ago :)',
+                },
+                '/home/spooky': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/dev': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/dev/hardware.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'CPU: Intel i5-8500K \nGPU: NVIDIA GeForce GTX 1050 Ti\nRAM: 16 Gb\nSSD: 256Gb\nHDD: 1Tb\nPSU: 550\nKeyboard: Akko 3087\nMouse: Genesis Xenon 200\nMonitor: 24" 75 Hz.\nHeadset: Logitech G633'
+                },
+                '/dev/laptop.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Lenovo Thinkpad, E14\nCPU: Intel i7\nGPU: Built-in\nRAM: 16Gb\nSSD: 256Gb\nHDD: None\nScreen: 14"'
+                },
+                '/usr': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/usr/bin': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/usr/bin/software.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'OS: Arco Linux\nWM: Qtile\nShell: ZSH\nText Editor: Vim\nIDE: VS Code\nWeb Browser: Brave\nGeneral Communication: Discord\nVM: VirtualBox\nWork: Slack'
+                },
+                '/home/spooky/hobbies.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'I like hacking... obviously\nJiu-Jitsu\nBalisong flipping :D\nReading'
+                },
+                '/usr/bin/langs.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Best at: Python & Ruby\nLove: C\nApp Dev: Flutter/Dart\nSomewhat good at: x64 Assembly\nMalware: C++ & C#\nLearning: Rust\nThose bash one liners tho...'
+                },
+                '/home/spooky/awesomeRepos/vim-spooky.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Name: <a href="https://github.com/SpookySec/vim-spooky" target="_blank">vim-spooky</a>\nDescription: A nice vim color theme\nPreview: click <a href="/assets/previews/vim.html" target="_blank">here</a> to view the color theme'
+                },
+                '/home/spooky/awesomeRepos/osinted.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Name: <a href="https://github.com/SpookySec/OSINTed" target="_bank">OSINTed</a>\nDescription: an easy to use Open Source Intelligence gathering tools with nice UX\nPreview:\n<img src="/assets/previews/osinted.jpg" height="125vh" width="315vh">'
+                },
+                '/home/spooky/peopleToCheckOut.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Awesome people who are worth checking out:\n- <a href="https://instagram.com/cloasies" target="_blank">C L O A S I E S</a>\n- <a href="https://instagram.com/http.3l3ctro" target="_blank">Electro</a>\n- <a href="https://instagram.com/gi.xr" target="_blank">Gixer</a>\n- <a href="https://instagram.com/karmasploit" target="_blank">Karma</a>\n- <a href="https://instagram.com/rip.meep" target="_blank">Rip Meep</a>\n- <a href="https://instagram.com/dreycoding" target="_blank">Drey</a>\n- <a href="https://instagram.com/inc0gnit0.offical" target="_blank">Incognito</a> (arch user btw)\n- <a href="https://instagram.com/unkn0wn.dev" target="_blank">unknown dev</a>\n- <a href="https://instagram.com/retry_mp3" target="_blank">Retry</a>\n- <a href="https://instagram.com/realcatlinux" target="_blank">Cat linux</a>\n- <a href="https://instagram.com/deep.tech" target="_blank">DeepTech</a>\n- <a href="https://instagram.com/doggolinux" target="_blank">Dog linux</a>\n- <a href="https://instagram.com/mkbcoding" target="_blank">MKBcoding</a>\n- <a href="https://instagram.com/neo.ph03nix" target="_blank">Neo</a>\n- <a href="https://instagram.com/devyansh_creatives" target="_blank">DS</a>\n- <a href="https://instagram.com/j4ilbr3k" target="_blank">Jail Break</a>\n- <a href="https://instagram.com/cpuhurtz" target="_blank">CPU Hurtz</a>\n- <a href="https://instagram.com/thecybersecuritytutor" target="_blank">thecybersecuritytutor</a>\n- <a href="https://instagram.com/h4x5p4c3" target="_blank">j0^35</a> (arch user btw)\n- <a href="https://instagram.com/that_faceless_code" target="_blank">That FaceLess Coder</a>\n- <a href="https://instagram.com/skript0r" target="_blank">Skriptor</a>\n- <a href="https://instagram.com/cyberarms" target="_blank">Cyber Arms</a>'
+                },
+                '/home/spooky/goodResources': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/home/spooky/goodResources/books': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/home/spooky/goodResources/books/PracticalBinaryAnalysis.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Name: Practical Binary Analysis\nDescription: A really in-depth book about binary reversing and exploitation\nRecommendation Level: High (if you\'re intersting in RE)\nDifficulty: Hard\nOfficial Source: right <a href="https://practicalbinaryanalysis.com/" target="_blank">here</a>'
+                },
+                '/home/spooky/goodResources/books/LinuxForHackers.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Name: Linux fore Hackers\nDescription: A great books if you\'re just starting out and have no background with linux!\nRecommendation Level: Medium\nDifficulty: Easy\nOfficial Source: right <a href="https://www.amazon.com/Linux-Basics-Hackers-Networking-Scripting-ebook/dp/B077WWRK8B" target="_blank">here</a>'
+                },
+                '/home/spooky/goodResources/books/HackingArtOfExploitation.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Name: Hacking: the art of exploitation\nDescription: A good introduction about common hacking concepts like networking, exploitaton, scripting etc...\nRecommendation Level: Medium\nDifficulty: Medium\nOfficial Source: right <a href="https://www.amazon.com/Hacking-Art-Exploitation-Jon-Erickson/dp/1593271441" target="_blank">here</a>'
+                },
+                '/home/spooky/goodResources/books/AutomateTheBoringStuffWithPython.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Name: Automate The Boring Stuff With Python\nDescription: The best introduction to the Python programming language so far, offers some real life example project to keep you active\nRecommendation Level: High (if you don\'t know any python yet)\nDifficulty: Easy\nOfficial Source: right <a href="https://automatetheboringstuff.com/">here<a/>'
+                }
+            }
+        })
+
+        emulator.commands.clear = function(env) {
+            output.innerHTML = ''
+            env.exit()
+        }
+
+        var ENTER = 13
+        var UP = 38
+        var DOWN = 40
+
+        function log(result) {
+            if (result) {
+                output.innerHTML += result + '\n'
+            }
+            var objDiv = document.getElementById("shell");
+            objDiv.scrollTop = objDiv.scrollHeight;
+        }
+
+        function error(result) {
+            log('<div class="error">' + result + '</div>')
+        }
+
+        function run(cmd) {
+            var out = log('$ ' + cmd)
+            return emulator.run(cmd).then(log, error)
+        }
+
+        var completeFunctions = {}
+        completeFunctions[UP] = emulator.completeUp
+        completeFunctions[DOWN] = emulator.completeDown
+
+        function complete(direction) {
+            var completeFunction = completeFunctions[direction]
+            if (!completeFunction) {
+                return
+            }
+            var cursorPosition = input.selectionStart
+            var beforeCursor = input.value.slice(0, cursorPosition)
+            completeFunction(beforeCursor).then(function(completion) {
+                if (completion) {
+                    input.value = completion
+                    input.setSelectionRange(cursorPosition, cursorPosition)
+                }
+            })
+        }
+
+        input.addEventListener('keydown', function(e) {
+            if (e.altKey || e.metaKey || e.shiftKey || e.ctrlKey) {
+                e.preventDefault()
+                input.focus()
+            }
+            if (e.which === UP || e.which === DOWN) {
+                e.preventDefault()
+                complete(e.which)
+            }
+
+            if (e.ctrlKey && event.keyCode == 76) {
+                run("clear")
+                input.focus()
+            }
+
+            if (e.key == "Tab") {
+                e.preventDefault();
+                let terms = input.value.split(' ');
+                let fileToComplete = terms.pop();
+                if (terms.length < 1 || fileToComplete.length < 1) {
+                    // To stop command completion. Too much work
+                    input.focus()
+                    return;
+                }
+                emulator.readDir('.').then(function(files) {
+                    let match = files.filter(file => !file.startsWith('.') && file.toLowerCase().includes(fileToComplete.toLowerCase()))[0];
+                    if (match) {
+                        input.value = terms.join(' ') + ' ' + match;
+                    } else {
+                        input.focus()
+                        return;
+                    }
+
+                })
+            }
+
+            if (e.ctrlKey && event.keyCode == 67) {
+                input.value = '\n';
+                input.focus()
+            }
+        })
+
+        input.addEventListener('keyup', function(e) {
+            if (e.which !== ENTER) {
+                return
+            }
+            run(input.value).then(function() {
+                input.value = ''
+                document.body.scrollTop = 10e6
+            })
+        })
+
+        document.body.addEventListener('click', function() {
+            // Prevent when user is selecting text
+            if (!window.getSelection().isCollapsed) {
+                return
+            }
+            input.focus()
+        })
+
+        run("ls").then(function() {
+            run("cat whoami.txt")
+        });
+    </script>
+
+<div class="inspiration">Inspired by: <a id="nullsec" href="https://0x00sec.org" target="_blank">0x00sec</a></div>  
+
+</body>
+</html>
