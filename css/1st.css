@@ -12,7 +12,7 @@ body{
     margin: auto;
     font-family: 'Lora', serif;
     line-height: 1.4em;
-    background-color: #10151b;
+    background-color:var(--bgcolor);
 }
 aside
 {
@@ -36,24 +36,24 @@ section
 }
 
 a:link, a:visited{
-    color:lawngreen;
+    color:rgb(19, 16, 27);
     padding: 2px 5px;
-    text-align: center;
     text-decoration: none;
     display: inline-block;
 
 }
 
 a:hover, a:active{
-    background-color: none;
-    color:aqua;
+    color:rgb(16, 0, 36);
 }
 
 div.sticky{
     position: relative;
     position: sticky;
     top: 0;
-    padding: 30px;
+    padding: 50px;
+    background-color: wheat;
+
     
 }
 
@@ -70,7 +70,6 @@ li {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color:NONE;
   }
   
   li {
@@ -117,6 +116,7 @@ div.bg{
 
 footer{
   text-align: center;
-  color: darkgrey;
+  color: rgb(0, 0, 0);
   font-family: monospace;
+  
   }
