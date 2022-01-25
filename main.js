@@ -2227,6 +2227,6 @@
         }
     }, {}]
 }, {}, [31]);
-function myfunc(about){
-    var a = document.location.href("about.html");
+function myfunc(){
+    var a = document.location.href("index.html");
 }
