@@ -2227,6 +2227,3 @@
         }
     }, {}]
 }, {}, [31]);
-function myfunc(){
-    var a = document.location.href("index.html");
-}
