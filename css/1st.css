@@ -5,15 +5,7 @@
 }
 
 
-body{
 
-    padding: 1em;
-    max-width: 2000px;
-    margin: auto;
-    font-family: 'Lora', serif;
-    line-height: 1.4em;
-    background-color:var(--bgcolor);
-}
 aside
 {
     float: left;
@@ -35,17 +27,6 @@ section
         text-align: center;
 }
 
-a:link, a:visited{
-    color:rgb(19, 16, 27);
-    padding: 2px 5px;
-    text-decoration: none;
-    display: inline-block;
-
-}
-
-a:hover, a:active{
-    color:rgb(16, 0, 36);
-}
 
 div.sticky{
     position: relative;
@@ -89,7 +70,7 @@ li {
     background-color: none;
   }
   .active {
-    background-color: #04AA6D;
+   color: honeydew;
   }
 
 div.container{
