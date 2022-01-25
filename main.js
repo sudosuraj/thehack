@@ -2228,5 +2228,5 @@
     }, {}]
 }, {}, [31]);
 function myfunc(about){
-    var a = document.location.href("about.html")
+    var a = document.location.href("about.html");
 }
