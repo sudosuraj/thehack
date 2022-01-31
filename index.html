@@ -1,18 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<!-- something -->
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <head itemscope itemtype=http://th3hack.com/>
-    <meta itemprop=description content="th3hack is cyber security blog run by sudosuraz aka Suraj Sharma.">
-    <meta property="og:site_name" content="the hack sudosuraz">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name=description content="th3hack is cyber security blog run by sudosuraz aka Suraj Sharma.">
-    <meta name=apple-mobile-web-app-status-bar-style content="black-translucent">
-    <meta name=theme-color content="#367BF0">
-    <meta name=language content="English">
     <meta property="og:image" content="images/262571577_451645549718060_9104350931415552663_n.jpg" />
     <meta property="og:image:secure_url" content="images/262571577_451645549718060_9104350931415552663_n.jpgo" />
     <meta property="og:type" content="sudosuraz sec" />
@@ -20,10 +9,10 @@
     <meta property="og:title" content="#sudosuraz"/>
     <meta property="og:description" content="sudosuraz's environment :eyes:" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>HOME | SUDOSURAZ</title>
-    <link rel="stylesheet" href="../css/1st.css">
-    <link rel="icon" href="images/262571577_451645549718060_9104350931415552663_n.jpg">
-    <script src="/html/main.js"></script>
+
+    <link rel="icon" href="images/262571577_451645549718060_9104350931415552663_n.jpg" type="image/jpg"/>
+    <meta charset="utf-8">
+    <title>is that Shell | sudosuraz</title>
     <style>
         body {
             color: white;
@@ -38,7 +27,7 @@
         }
         
         a {
-            color: rgb(252, 0, 0);
+            color: rgb(255, 0, 0);
             text-decoration: none;
             transition: color .22s linear;
         }
@@ -69,15 +58,69 @@
             width: 70vw;
         }
         
-
+        #shell {
+            background-color: #000000;
+            border-style: solid;
+            border-width: 10px;
+            border-color: #000000;
+            height: 70vh;
+            width: 70vw;
+            overflow: auto;
+            scroll-behavior: smooth;
+        }
         
-
+        #shell::-webkit-scrollbar {
+            width: 6px;
+            background-color: #F5F5F5;
+        }
+        
+        #shell::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);;
+            background-color: #F5F5F5;
+        }
+        
+        #shell::-webkit-scrollbar-thumb {
+            background-color: #000000;
+        }
+        
         #title {
             font-size: 50px;
         }
         
-             
-      
+        #output {
+            padding-top: 10px;
+            white-space: pre;
+            color: #00ce00;
+        }
+        
+        #input {
+            width: 90%;
+            border: none;
+            font-size: inherit;
+        }
+        
+        #input:focus {
+            outline: none;
+        }
+        
+        #input,
+        .input-wrap {
+            color: #00ffea;
+        }
+        
+        .error {
+            color: red;
+            
+        }
+
+        .inspiration {
+            position: absolute;
+            bottom: 8px;
+            left: 16px;
+            font-size: 8px;
+            color:rgb(32, 32, 32);
+        }
 
         #nullsec {
             color:rgb(44, 44, 44)
@@ -90,42 +133,277 @@
         
     </style>
 </head>
-
-
-    </head>
-
-    <body>
-        <div class="sticky">
-            <nav>
-                <ul style="text-align: center;">
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href=about.htm>WHOAMI</a></li>
-                    <li><a href=blogs.html>BLOGS</a></li>
-                    <li><a href=writeups.html>WRITEUPS</a></li>
-                </ul>
-            </nav>
-            </div>
-        <div id="header">
-            <h1><a href="">suraz's 127.0.0.1</a></h1>
-            <h2><a href="javascript:run('cat instagram.txt')">Instagram</a> - <a
-                    href="javascript:run('cat github.txt')">Github</a></h2>
+<body>
+    <div id="header">
+        <h1><a href="">suraz's localhost</a></h1>
+        <h2><a href="index.html">HOME</a> - <a href="javascript:run('cat instagram.txt')">Instagram</a> - <a href="javascript:run('cat github.txt')">Github</a> - <a href="about.htm">about</a> - <a href="blogs.html">blogs</a> - <a href="writeups.html">writeups</a>
+   </h2> </div>
+    <div id="shell">
+        <div id="output"></div>
+        <div class="input-wrap">
+            <span>$</span>
+            <input id="input" type="text" autofocus />
         </div>
-        <div id="shell">
-            <div id="output"></div>
-            <div class="input-wrap">
-                <span>$</span>
-                <input id="input" type="text" />
-            </div>
-        </div>
-        <span>under devlopment, you can dirty your hand by my web based <a href="cli.html">CLI here.</a></span>
+    </div>
+    <script src="main.js" type="text/javascript"></script>
+    <script>
+        var input = document.getElementById('input')
+        var output = document.getElementById('output')
 
-    </body>
+        var emulator = bashEmulator({
+            workingDirectory: '/home/sudosuraz/',
+            fileSystem: {
+                '/': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/home': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/home/sudosuraz/awesomeRepos': {
+                    type: 'dir',
+                    modified: Date.now()
+                }, 
+                '/home/sudosuraz/instagram.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: '<a href="https://instagram.com/sudosuraz" target="_blank">@sudosuraz</a> is my instagram account :P'
+                },
+                '/home/sudosuraz/discord.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'sudosurazSec\#6710 \<-\-- My discord \;\-\;'
+                },
+                '/home/sudosuraz/github.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Here\'s my Github <a href="https://github.com/sudosuraz" target="_blank">account</a>'
+                },
+                '/home/sudosuraz/.secret.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'perhaps "env" would reveal the hidden?'
+                },
+                '/home/sudosuraz/whoami.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Hello, welcome to my localhost.\nFeel free to discover the website for yourself!\n\t- Be ware, always check your environment :3' 
+                },
+                '/etc': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/etc/passwd': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'sudosuraz:x:1000:1000:sudosuraz:/home/sudosuraz:/bin/fish'
+                },
+                '/bin': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/bin/hack.bin': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: '--- T H E  U L T I M A T E  N A S A  H A C K ---'
+                },
+                '/proc': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/proc/self': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/proc/self/exe': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'As of right now, this server is running on localhost using a python web server\nJust kidding, that was long ago :)',
+                },
+                '/home/sudosuraz': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/dev': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/dev/hardware.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'CPU: Intel i5-8500K \nGPU: NVIDIA GeForce GTX 1050 Ti\nRAM: 16 Gb\nSSD: 256Gb\nHDD: 1Tb\nPSU: 550\nKeyboard: Akko 3087\nMouse: Genesis Xenon 200\nMonitor: 24" 75 Hz.\nHeadset: Logitech G633'
+                },
+                '/dev/laptop.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Lenovo Thinkpad, E14\nCPU: Intel i7\nGPU: Built-in\nRAM: 16Gb\nSSD: 256Gb\nHDD: None\nScreen: 14"'
+                },
+                '/usr': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/usr/bin': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/usr/bin/software.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'OS: Arco Linux\nWM: Qtile\nShell: ZSH\nText Editor: Vim\nIDE: VS Code\nWeb Browser: Brave\nGeneral Communication: Discord\nVM: VirtualBox\nWork: Slack'
+                },
+                '/home/sudosuraz/hobbies.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'I like hacking... obviously\nJiu-Jitsu\nBalisong flipping :D\nReading'
+                },
+                '/usr/bin/langs.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Best at: Python & Ruby\nLove: C\nApp Dev: Flutter/Dart\nSomewhat good at: x64 Assembly\nMalware: C++ & C#\nLearning: Rust\nThose bash one liners tho...'
+                },
+                '/home/sudosuraz/goodResources': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/home/sudosuraz/goodResources/books': {
+                    type: 'dir',
+                    modified: Date.now()
+                },
+                '/home/sudosuraz/goodResources/books/PracticalBinaryAnalysis.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Name: Practical Binary Analysis\nDescription: A really in-depth book about binary reversing and exploitation\nRecommendation Level: High (if you\'re intersting in RE)\nDifficulty: Hard\nOfficial Source: right <a href="https://practicalbinaryanalysis.com/" target="_blank">here</a>'
+                },
+                '/home/sudosuraz/goodResources/books/LinuxForHackers.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Name: Linux fore Hackers\nDescription: A great books if you\'re just starting out and have no background with linux!\nRecommendation Level: Medium\nDifficulty: Easy\nOfficial Source: right <a href="https://www.amazon.com/Linux-Basics-Hackers-Networking-Scripting-ebook/dp/B077WWRK8B" target="_blank">here</a>'
+                },
+                '/home/sudosuraz/goodResources/books/HackingArtOfExploitation.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Name: Hacking: the art of exploitation\nDescription: A good introduction about common hacking concepts like networking, exploitaton, scripting etc...\nRecommendation Level: Medium\nDifficulty: Medium\nOfficial Source: right <a href="https://www.amazon.com/Hacking-Art-Exploitation-Jon-Erickson/dp/1593271441" target="_blank">here</a>'
+                },
+                '/home/sudosuraz/goodResources/books/AutomateTheBoringStuffWithPython.txt': {
+                    type: 'file',
+                    modified: Date.now(),
+                    content: 'Name: Automate The Boring Stuff With Python\nDescription: The best introduction to the Python programming language so far, offers some real life example project to keep you active\nRecommendation Level: High (if you don\'t know any python yet)\nDifficulty: Easy\nOfficial Source: right <a href="https://automatetheboringstuff.com/">here<a/>'
+                }
+            }
+        })
 
-<footer>
-    <p>&copy Copyright 2022
-        <a href="https://twitter.com/sudosuraz">SUDOSURAZ</a>.
-        All rights reserved.
-    </p>
-</footer>
+        emulator.commands.clear = function(env) {
+            output.innerHTML = ''
+            env.exit()
+        }
 
+        var ENTER = 13
+        var UP = 38
+        var DOWN = 40
+
+        function log(result) {
+            if (result) {
+                output.innerHTML += result + '\n'
+            }
+            var objDiv = document.getElementById("shell");
+            objDiv.scrollTop = objDiv.scrollHeight;
+        }
+
+        function error(result) {
+            log('<div class="error">' + result + '</div>')
+        }
+
+        function run(cmd) {
+            var out = log('$ ' + cmd)
+            return emulator.run(cmd).then(log, error)
+        }
+
+        var completeFunctions = {}
+        completeFunctions[UP] = emulator.completeUp
+        completeFunctions[DOWN] = emulator.completeDown
+
+        function complete(direction) {
+            var completeFunction = completeFunctions[direction]
+            if (!completeFunction) {
+                return
+            }
+            var cursorPosition = input.selectionStart
+            var beforeCursor = input.value.slice(0, cursorPosition)
+            completeFunction(beforeCursor).then(function(completion) {
+                if (completion) {
+                    input.value = completion
+                    input.setSelectionRange(cursorPosition, cursorPosition)
+                }
+            })
+        }
+
+        input.addEventListener('keydown', function(e) {
+            if (e.altKey || e.metaKey || e.shiftKey || e.ctrlKey) {
+                e.preventDefault()
+                input.focus()
+            }
+            if (e.which === UP || e.which === DOWN) {
+                e.preventDefault()
+                complete(e.which)
+            }
+
+            if (e.ctrlKey && event.keyCode == 76) {
+                run("clear")
+                input.focus()
+            }
+
+            if (e.key == "Tab") {
+                e.preventDefault();
+                let terms = input.value.split(' ');
+                let fileToComplete = terms.pop();
+                if (terms.length < 1 || fileToComplete.length < 1) {
+                    // To stop command completion. Too much work
+                    input.focus()
+                    return;
+                }
+                emulator.readDir('.').then(function(files) {
+                    let match = files.filter(file => !file.startsWith('.') && file.toLowerCase().includes(fileToComplete.toLowerCase()))[0];
+                    if (match) {
+                        input.value = terms.join(' ') + ' ' + match;
+                    } else {
+                        input.focus()
+                        return;
+                    }
+
+                })
+            }
+
+            if (e.ctrlKey && event.keyCode == 67) {
+                input.value = '\n';
+                input.focus()
+            }
+        })
+
+        input.addEventListener('keyup', function(e) {
+            if (e.which !== ENTER) {
+                return
+            }
+            run(input.value).then(function() {
+                input.value = ''
+                document.body.scrollTop = 10e6
+            })
+        })
+
+        document.body.addEventListener('click', function() {
+            // Prevent when user is selecting text
+            if (!window.getSelection().isCollapsed) {
+                return
+            }
+            input.focus()
+        })
+
+        run("ls").then(function() {
+            run("cat whoami.txt")
+        });
+
+
+    </script>
+
+</body>
 </html>
