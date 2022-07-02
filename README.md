@@ -1,2 +1,2 @@
-# thehack
-It will be Launch soon! follow instagram.com/sudosuraz for further updates!
+# th3hack
+It will be Launch soon! follow https://www.instagram.com/sudosuraz for further updates!
